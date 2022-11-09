@@ -1,15 +1,15 @@
 
 import './App.css';
-import ItemListContainer from './Components/ItemListContainer';
-import NavBar from ".components/NavBar";
 
+import ItemListContainer from './components/ItemListContainer';
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
     <div className="App">
       <main>
-        <ItemListContainer greeting={"Hola Mundo"}/>
         <NavBar />
+        <ItemListContainer  greeting={"Bienvenidos!"} />
       </main>
 
     </div>
