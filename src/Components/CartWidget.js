@@ -2,7 +2,7 @@
 
 const CartWidget = () => {
     return (
-    <button>
+    <button className='btn btn-primary'>
         <i className="bi bi-cart3"></i>
     </button>
     );
