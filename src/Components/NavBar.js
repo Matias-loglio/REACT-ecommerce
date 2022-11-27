@@ -10,7 +10,7 @@ const NavBar = () => {
         <><div>
 
         </div>
-        <Navbar bg="light" expand="lg">
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant='dark'>
                 <Container>
                     <Navbar.Brand href="/">Tienda de Libros</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />

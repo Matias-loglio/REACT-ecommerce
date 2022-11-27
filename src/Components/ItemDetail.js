@@ -25,9 +25,9 @@ const ItemDetail = ({ item }) => {
 
     return (
         <div>
-            <div>{item.name}</div>
-            <div>{item.img}</div>
-            <div>{item.descripcion}</div>
+            <p>Titulo: {item.name}</p>
+            <img src={item.img}></img>
+            <p >{item.descripcion}</p>
             <div>{item.precio}</div>
             {currentStock > 0 && (
                 <p>In Stock: {currentStock}</p>
@@ -41,13 +41,13 @@ const ItemDetail = ({ item }) => {
                 )}
                 <div>
                     <button 
-                    className='btn btn-primary'
+                    className='btn btn-success'
                     onClick={handleAdd}
                     disabled={currentStock === 0}>
                         agregar al carrito
                     </button>
                     <button 
-                    className='btn btn-primary'
+                    className='btn btn-success'
                     onClick={handleCheckout}
                     disabled={currentStock === 0}>
                         Finalizar compra

@@ -12,14 +12,18 @@ const Item = ({product}) => {
     }
 
 return (
-    <div onClick={handleNavigate}>
-        <div>
-            <img
-            src={product.img}
-            alt="Product"
-            />
+    <div className='card' onClick={handleNavigate}>
+        <div className='card-body'>
+            
+            <div>
+                <img
+                src={product.img}
+                alt="Product"
+                />
+                
+            </div>   
         </div>
-        <div>
+    <div>
             <span >${product.precio}</span>
         <Link to={`/item/${product.id}`}><button className='btn btn-primary'>Ver Detalle</button></Link> 
         </div>

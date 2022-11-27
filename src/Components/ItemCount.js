@@ -3,7 +3,7 @@ export const ItemCount = ({ count, handleCount }) => {
     return (
     <div >
         <button
-        className='btn btn-primary'
+        className='btn btn-secondary'
         onClick={() => handleCount("minus")}
     
         >
@@ -16,7 +16,7 @@ export const ItemCount = ({ count, handleCount }) => {
         {count}
         </span>
         <button
-        className='btn btn-primary'
+        className='btn btn-secondary'
         onClick={() => handleCount("plus")}
         
         >
