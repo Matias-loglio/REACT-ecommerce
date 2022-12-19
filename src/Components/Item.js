@@ -1,12 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-const Item = ({product}) => {
+const Item = ({ product, quantityAdded }) => {
     const navigate = useNavigate();
 
-    const descripcion = product.descripcion.slice(0,30);
-    const titulo = product.name.slice(0,20);
-
+    
     function handleNavigate() {
         navigate(`/item/${product.id}`);
     }
@@ -14,13 +12,18 @@ const Item = ({product}) => {
 return (
     <div className='card' onClick={handleNavigate}>
         <div className='card-body'>
-            
             <div>
                 <img
                 src={product.img}
                 alt="Product"
                 />
-                
+                <div className="flex justify-between items-center">
+                    <span className="font-bold">${product.price}</span>
+                    <span className="text-xs">
+                        {quantityAdded ? "Agregados" : "En Stock"}:{" "}
+                        {quantityAdded || product.stock}
+                    </span>
+                </div>
             </div>   
         </div>
     <div>

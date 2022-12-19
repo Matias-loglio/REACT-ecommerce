@@ -1,45 +1,26 @@
 import Container from 'react-bootstrap/Container';
+import { Link, NavLink } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from "./CartWidget";
 
 
 const NavBar = () => {
     return (
-        <><div>
-
-        </div>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant='dark'>
                 <Container>
-                    <Navbar.Brand href="/">Tienda de Libros</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
+                    <Link to="/" className='navbar-brand'>Tienda de Libros</Link>
                         <Nav className="me-auto">
-                            <Navbar.Brand href="/"> Home
-                            </Navbar.Brand>
-                            <Navbar.Brand href="/category/libro">Libros</Navbar.Brand>
-                            <Navbar.Brand href="/category/disco">Discos</Navbar.Brand>
-                            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Libros</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">
-                                    Discos
-                                </NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Ofertas</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">
-                                    Contactanos
-                                </NavDropdown.Item>
-                            </NavDropdown>
-                            <Nav.Link href="#link"> <CartWidget /></Nav.Link>
+                            <Link to="/" className='nav-item nav-link active'> Home</Link>
+                            <Link to="/category/libro" className='nav-item nav-link'>Libros</Link>
+                            <Link to="/category/disco" className='nav-item nav-link'>Discos</Link>
+                            <Link to="/cart"> <CartWidget /></Link>
                         </Nav>
-                    </Navbar.Collapse>
+                    
                 </Container>
-            </Navbar></>
+        </Navbar>
     
     );
 };
 
 export default NavBar;
-
-

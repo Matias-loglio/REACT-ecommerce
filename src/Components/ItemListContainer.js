@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
 import {items} from '../Mocks/items.mock';
 
-const ItemListContainer = ({ greeting }) => {
+const ItemListContainer = () => {
     const { category } = useParams();
     const [products, setProducts] = useState([]);
 
@@ -31,7 +31,7 @@ const ItemListContainer = ({ greeting }) => {
     }
     
     return (
-    <div style={{color: "orange", fontSize: "15px"}}>{greeting}
+    <div style={{color: "orange", fontSize: "15px"}}>
     <ItemList products={products} />
     </div>
 

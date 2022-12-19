@@ -1,26 +1,31 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { CartContext } from "../context/cartContext";
 import { ItemCount } from "./ItemCount";
 
 
 const ItemDetail = ({ item }) => {
-    const navigate = useNavigate();
-    const [count, setCount] = useState(1);
-    const [currentStock, setCurrentStock] = useState(item.stock);
-    const maxQuantity = currentStock; 
+    const { addItem } = useContext(CartContext);
+    const navegacion = useNavigate();
+    const [contador, setContador] = useState(1);
+    const [actual, setActualStock] = useState(item.stock);
+    const maxCantidad = actual; 
 
     function handleCount(type) {
-        if (type === "plus" && count < maxQuantity) setCount(count + 1);
-        if (type === "minus" && count > 1) setCount(count - 1);
+        if (type === "plus" && contador < maxCantidad) setContador(contador + 1);
+        if (type === "minus" && contador > 1) setContador(contador - 1);
     }
 
     function handleAdd(){
-        if (currentStock < count) alert("no hay suficiente stock");
-        else setCurrentStock(currentStock - count);
+        if (actual < contador) alert("Sin stock");
+        else {
+            setActualStock(actual - contador);
+            addItem(item, contador);
+        }
     }
 
     function handleCheckout() {
-        navigate("/cart")
+        navegacion("/cart")
     }
 
     return (
@@ -29,28 +34,29 @@ const ItemDetail = ({ item }) => {
             <img src={item.img}></img>
             <p >{item.descripcion}</p>
             <div>{item.precio}</div>
-            {currentStock > 0 && (
-                <p>In Stock: {currentStock}</p>
+            {actual > 0 && (
+            <p>In Stock: {actual}</p>
             )}
 
             <div>
-                {currentStock > 0 ? (
-                    <ItemCount count={count} handleCount={handleCount} />
+                {actual > 0 ? (
+                    <ItemCount count={contador} handleCount={handleCount} />
                 ) : (
                     <span> Sin Stock </span>
                 )}
                 <div>
                     <button 
-                    className='btn btn-success'
-                    onClick={handleAdd}
-                    disabled={currentStock === 0}>
+                        className='btn btn-success'
+                        onClick={handleAdd}
+                        disabled={actual === 0}
+                        >
                         agregar al carrito
                     </button>
                     <button 
-                    className='btn btn-success'
-                    onClick={handleCheckout}
-                    disabled={currentStock === 0}>
-                        Finalizar compra
+                        className='btn btn-success'
+                        onClick={handleCheckout}
+                        >
+                        Comprar
                     </button>
                 </div>
             </div>
