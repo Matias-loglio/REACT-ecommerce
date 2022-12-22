@@ -10,15 +10,16 @@ const Item = ({ product, quantityAdded }) => {
     }
 
 return (
+    
     <div className='card' onClick={handleNavigate}>
         <div className='card-body'>
             <div>
+            <span>{product.name}</span>
                 <img
                 src={product.img}
                 alt="Product"
                 />
                 <div className="flex justify-between items-center">
-                    <span className="font-bold">${product.price}</span>
                     <span className="text-xs">
                         {quantityAdded ? "Agregados" : "En Stock"}:{" "}
                         {quantityAdded || product.stock}
@@ -28,6 +29,7 @@ return (
         </div>
     <div>
             <span >${product.precio}</span>
+            <hr/>
         <Link to={`/item/${product.id}`}><button className='btn btn-primary'>Ver Detalle</button></Link> 
         </div>
         

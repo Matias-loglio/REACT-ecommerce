@@ -5,27 +5,27 @@ import { ItemCount } from "./ItemCount";
 
 
 const ItemDetail = ({ item }) => {
-    const { addItem } = useContext(CartContext);
+    const { addProduct } = useContext(CartContext);
     const navegacion = useNavigate();
-    const [contador, setContador] = useState(1);
-    const [actual, setActualStock] = useState(item.stock);
-    const maxCantidad = actual; 
+    const [count, setCount] = useState(1);
+    const [currentStock, setCurrentStock] = useState(item.stock);
+    const maxQuantity  = currentStock; 
 
     function handleCount(type) {
-        if (type === "plus" && contador < maxCantidad) setContador(contador + 1);
-        if (type === "minus" && contador > 1) setContador(contador - 1);
+        if (type === "plus" && count < maxQuantity ) setCount(count + 1);
+        if (type === "minus" && count > 1) setCount(count - 1);
     }
 
     function handleAdd(){
-        if (actual < contador) alert("Sin stock");
+        if (currentStock < count) alert("Sin stock");
         else {
-            setActualStock(actual - contador);
-            addItem(item, contador);
+            setCurrentStock(currentStock - count);
+            addProduct(item, count);
         }
     }
 
     function handleCheckout() {
-        navegacion("/cart")
+        navegacion('/cart')
     }
 
     return (
@@ -33,14 +33,14 @@ const ItemDetail = ({ item }) => {
             <p>Titulo: {item.name}</p>
             <img src={item.img}></img>
             <p >{item.descripcion}</p>
-            <div>{item.precio}</div>
-            {actual > 0 && (
-            <p>In Stock: {actual}</p>
+            <div>${item.precio}</div>
+            {currentStock > 0 && (
+            <p>In Stock: {currentStock}</p>
             )}
 
             <div>
-                {actual > 0 ? (
-                    <ItemCount count={contador} handleCount={handleCount} />
+                {currentStock > 0 ? (
+                    <ItemCount count={count} handleCount={handleCount} />
                 ) : (
                     <span> Sin Stock </span>
                 )}
@@ -48,7 +48,7 @@ const ItemDetail = ({ item }) => {
                     <button 
                         className='btn btn-success'
                         onClick={handleAdd}
-                        disabled={actual === 0}
+                        disabled={currentStock === 0}
                         >
                         agregar al carrito
                     </button>
