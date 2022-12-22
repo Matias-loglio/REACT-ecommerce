@@ -27,8 +27,6 @@ const totalPrecio = () => {
 
 const totalProducts = () => cart.reduce((acumulador, productoActual) => acumulador + productoActual.quantity, 0);
 
-
-
 return (
     <CartContext.Provider
     value={{ addProduct, clearCart, isInCart, removeProduct, totalPrecio, totalProducts, cart }}
